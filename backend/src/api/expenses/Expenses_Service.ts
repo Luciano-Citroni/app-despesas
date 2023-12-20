@@ -8,7 +8,7 @@ type ExpensesRequest = {
     price?: number;
     fkUser?: string;
     payday?: Date;
-    statusPayment: boolean;
+    statusPayment?: boolean;
     dataCreated?: Date;
 };
 
