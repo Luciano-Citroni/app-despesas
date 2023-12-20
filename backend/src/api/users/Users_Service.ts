@@ -8,7 +8,7 @@ type UsersRequest = {
     password?: string;
 };
 
-export class UserService {
+export class UsersService {
     private repository = AppDataSource.getRepository(Users);
 
     async create({ name, email, password }: UsersRequest): Promise<String | Error> {
