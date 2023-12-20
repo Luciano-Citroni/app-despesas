@@ -33,13 +33,7 @@ export class UsersService {
 
     async getByID({ id }: UsersRequest): Promise<Users | Error> {
         try {
-            const user = await this.repository.findOneBy({ id: id });
-
-            if (!user) {
-                return new Error('User does not exist');
-            }
-
-            return user;
+            return await this.repository.findOneBy({ id: id });
         } catch (err) {
             return new Error(err);
         }
@@ -47,13 +41,7 @@ export class UsersService {
 
     async getByEmail({ email }: UsersRequest): Promise<Users | Error> {
         try {
-            const user = await this.repository.findOneBy({ email: email });
-
-            if (!user) {
-                return new Error('User does not exist');
-            }
-
-            return user;
+            return await this.repository.findOneBy({ email: email });
         } catch (err) {
             return new Error(err);
         }

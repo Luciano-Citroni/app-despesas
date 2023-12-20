@@ -35,13 +35,7 @@ export class ExpensesService {
 
     async getByID({ id }: ExpensesRequest): Promise<Expenses | Error> {
         try {
-            const expense = await this.repository.findOneBy({ id: id });
-
-            if (!expense) {
-                return new Error('Expense does not exist');
-            }
-
-            return expense;
+            return await this.repository.findOneBy({ id: id });
         } catch (err) {
             return new Error(err);
         }
@@ -49,13 +43,7 @@ export class ExpensesService {
 
     async getAll(): Promise<Expenses[] | Error> {
         try {
-            const expense = await this.repository.find();
-
-            if (!expense) {
-                return new Error('There are no registered expenses');
-            }
-
-            return expense;
+            return await this.repository.find();
         } catch (err) {
             return new Error(err);
         }
