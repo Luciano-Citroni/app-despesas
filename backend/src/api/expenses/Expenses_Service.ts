@@ -23,6 +23,7 @@ export class ExpensesService {
                 price,
                 fkUser,
                 payday,
+                statusPayment: false,
             });
 
             await this.repository.save(expense);

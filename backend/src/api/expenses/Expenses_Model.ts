@@ -1,8 +1,7 @@
-import { Entity, Column, PrimaryColumn, ManyToOne } from 'typeorm';
-import { Users } from '../users/Users_Model';
+import { Entity, Column, PrimaryColumn } from 'typeorm';
 import { generateUUID } from '../../utils/uuid';
 
-Entity('expenses');
+@Entity('expenses')
 export class Expenses {
     @PrimaryColumn('uuid')
     id: string;
@@ -16,7 +15,6 @@ export class Expenses {
     @Column('double')
     price: number;
 
-    @ManyToOne(() => Users, (users) => users.id)
     @Column({ name: 'fk_users' })
     fkUser: string;
 

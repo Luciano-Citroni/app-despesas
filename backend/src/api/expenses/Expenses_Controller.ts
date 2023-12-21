@@ -130,7 +130,7 @@ export class ExpensesController {
                 return response.status(404).send({ message: 'This user does not exist' });
             }
 
-            return response.status(200);
+            return response.send();
         } catch (err) {
             console.log(err);
             return response.status(500);

@@ -11,6 +11,6 @@ userRouter.get('/get/id/:id', controller.getByID);
 
 userRouter.put('/update', controller.update);
 
-userRouter.put('/delete', controller.delete);
+userRouter.delete('/delete', controller.delete);
 
 export { userRouter };
