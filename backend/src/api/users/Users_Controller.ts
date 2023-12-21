@@ -2,9 +2,9 @@ import { Request, Response } from 'express';
 import { UsersService } from './Users_Service';
 import { EncryptPass } from '../../utils/bcrypt';
 
-export class UsersController {
-    private service = new UsersService();
+const service = new UsersService();
 
+export class UsersController {
     async create(request: Request, response: Response) {
         try {
             const { name, email, password } = request.body;
@@ -19,7 +19,7 @@ export class UsersController {
                 return response.status(500).send({ message: 'Unable to encrypt password' });
             }
 
-            const result = await this.service.create({ name: name, email: email, password: passHash as string });
+            const result = await service.create({ name: name, email: email, password: passHash as string });
 
             if (result instanceof Error) {
                 return response.status(400).send({ message: result.message });
@@ -40,7 +40,7 @@ export class UsersController {
                 return response.status(400).send({ message: 'It is necessary to fill in all the data' });
             }
 
-            const result = await this.service.getByID({ id: id });
+            const result = await service.getByID({ id: id });
 
             if (result instanceof Error) {
                 console.log(result.message);
@@ -66,7 +66,7 @@ export class UsersController {
                 return response.status(400).send({ message: 'It is necessary to fill in all the data' });
             }
 
-            const result = await this.service.getByEmail({ email: email });
+            const result = await service.getByEmail({ email: email });
 
             if (result instanceof Error) {
                 console.log(result.message);
@@ -95,7 +95,7 @@ export class UsersController {
             }
 
             if (email) {
-                const user = await this.service.getByEmail({ email: email });
+                const user = await service.getByEmail({ email: email });
 
                 if (user || user instanceof Error) {
                     return response.status(400).send({ message: 'Email already registered' });
@@ -111,7 +111,7 @@ export class UsersController {
                 final_password = passHash;
             }
 
-            const result = await this.service.update({ id: id, email: email, password: final_password });
+            const result = await service.update({ id: id, email: email, password: final_password });
 
             if (result instanceof Error) {
                 return response.status(404).send({ message: result.message });
@@ -132,7 +132,7 @@ export class UsersController {
                 return response.status(400).send({ message: 'It is necessary to fill in all the data' });
             }
 
-            const result = await this.service.delete({ id: id });
+            const result = await service.delete({ id: id });
 
             if (result instanceof Error) {
                 return response.status(404).send({ message: 'This user does not exist' });
