@@ -1,2 +1,2 @@
 # app-despesas
- sistema para despesas
+ sistema simples com autenticação para controlar despesas
