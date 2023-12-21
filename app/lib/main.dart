@@ -1,5 +1,8 @@
 import 'package:app/src/pages/home/home_page.dart';
+import 'package:app/src/themes/dark_theme.dart';
+import 'package:app/src/themes/light_theme.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 void main() {
   runApp(const App());
@@ -14,6 +17,13 @@ class App extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'App para Despesas',
       home: HomePage(),
+      theme: ThemeData(
+        fontFamily: 'Poppins',
+        brightness: Brightness.dark,
+        colorScheme: const ColorScheme.dark(
+          primary: Color(0xFF8E44D8),
+        ),
+      ),
     );
   }
 }

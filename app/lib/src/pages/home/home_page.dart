@@ -9,8 +9,9 @@ class HomePage extends StatelessWidget {
   final List<Expenses> dados = [
     Expenses(
       id: "d1b94bb5-9e53-497b-aaf1-6d4fec60f712",
-      name: "compras no supermercado",
-      description: "fui comprar 2 leites e 1 nescal",
+      name: "Despesa 1",
+      description:
+          "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book",
       price: 380,
       fkUser: "dd954051-692e-440d-98bd-d2a395cc6fb1",
       payday: DateTime.now(),
@@ -62,24 +63,35 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Despesas'),
-      ),
       body: ListView.builder(
         itemCount: dados.length,
         itemBuilder: (context, index) {
           return Padding(
-            padding: const EdgeInsets.all(8.0),
+            padding: const EdgeInsets.all(6),
             child: CardHome(
               expenses: dados[index],
             ),
           );
         },
       ),
-      floatingActionButton: FloatingActionButton(
+      floatingActionButton: FloatingActionButton.extended(
         onPressed: () {},
-        child: const Icon(
+        label: const Text(
+          'Nova Despesa',
+          style: TextStyle(
+            fontWeight: FontWeight.bold,
+            color: Colors.white,
+          ),
+        ),
+        icon: const Icon(
           Icons.add,
+          color: Colors.white,
+        ),
+        backgroundColor: const Color(0xFF2D2931),
+        shape: const RoundedRectangleBorder(
+          borderRadius: BorderRadius.all(
+            Radius.circular(10),
+          ),
         ),
       ),
     );

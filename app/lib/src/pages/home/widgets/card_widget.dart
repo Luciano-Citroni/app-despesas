@@ -10,39 +10,55 @@ class CardHome extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 80,
-      decoration: const BoxDecoration(
-        borderRadius: BorderRadius.all(Radius.circular(10)),
-        color: Colors.deepPurple,
+      height: 250,
+      decoration: BoxDecoration(
+        borderRadius: const BorderRadius.all(Radius.circular(10)),
+        color: Theme.of(context).colorScheme.primary,
       ),
       alignment: Alignment.centerLeft,
-      child: Padding(
-        padding: EdgeInsets.all(12),
-        child: Row(
-          children: [
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(expenses.name),
-                  Text(DateFormat('dd/MM/yyyy').format(expenses.payday)),
-                  Text("R\$${expenses.price}")
-                ],
-              ),
-            ),
-            Row(
-              children: [
-                IconButton(
-                  onPressed: () {},
-                  icon: const Icon(Icons.delete_outline),
+      child: InkWell(
+        onTap: () {
+          print(expenses.id);
+        },
+        child: Padding(
+          padding: EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                expenses.name,
+                style: const TextStyle(
+                  fontSize: 26,
+                  fontWeight: FontWeight.bold,
                 ),
-                IconButton(
-                  onPressed: () {},
-                  icon: const Icon(Icons.arrow_forward_ios),
-                )
-              ],
-            )
-          ],
+              ),
+              const SizedBox(
+                height: 5,
+              ),
+              Expanded(
+                child: Text(
+                  expenses.description,
+                ),
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    "R\$${expenses.price}",
+                    style: const TextStyle(
+                      fontSize: 15,
+                    ),
+                  ),
+                  Text(
+                    DateFormat('dd/MM/yyyy').format(expenses.payday),
+                    style: const TextStyle(
+                      fontSize: 15,
+                    ),
+                  ),
+                ],
+              )
+            ],
+          ),
         ),
       ),
     );
