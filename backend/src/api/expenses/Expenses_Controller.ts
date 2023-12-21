@@ -3,9 +3,9 @@ import { ExpensesService } from './Expenses_Service';
 import { parse } from 'date-fns';
 import { UsersService } from '../users/Users_Service';
 
-export class ExpensesController {
-    private service = new ExpensesService();
+const service = new ExpensesService();
 
+export class ExpensesController {
     async create(request: Request, response: Response) {
         try {
             const { name, description, price, fkUser, payday } = request.body;
@@ -23,7 +23,7 @@ export class ExpensesController {
 
             const final__payday = parse(payday, 'dd/MM/yyyy', new Date());
 
-            const result = await this.service.create({ name: name, description: description, price: price, fkUser: user.id, payday: final__payday });
+            const result = await service.create({ name: name, description: description, price: price, fkUser: user.id, payday: final__payday });
 
             if (result instanceof Error) {
                 return response.status(400).send({ message: result.message });
@@ -44,7 +44,7 @@ export class ExpensesController {
                 return response.status(400).send({ message: 'It is necessary to fill in all the data' });
             }
 
-            const result = await this.service.getByID({ id: id });
+            const result = await service.getByID({ id: id });
 
             if (result instanceof Error) {
                 console.log(result.message);
@@ -64,7 +64,7 @@ export class ExpensesController {
 
     async getAll(request: Request, response: Response) {
         try {
-            const result = await this.service.getAll();
+            const result = await service.getAll();
 
             if (result instanceof Error) {
                 console.log(result.message);
@@ -96,7 +96,7 @@ export class ExpensesController {
                 final_payday = parse(payday, 'dd/MM/yyyy', new Date());
             }
 
-            const result = await this.service.update({
+            const result = await service.update({
                 id: id,
                 statusPayment: statusPayment,
                 description: description,
@@ -124,7 +124,7 @@ export class ExpensesController {
                 return response.status(400).send({ message: 'It is necessary to fill in all the data' });
             }
 
-            const result = await this.service.delete({ id: id });
+            const result = await service.delete({ id: id });
 
             if (result instanceof Error) {
                 return response.status(404).send({ message: 'This user does not exist' });
