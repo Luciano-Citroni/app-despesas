@@ -1,6 +1,8 @@
 import { DataSource } from 'typeorm';
 import 'reflect-metadata';
 import 'dotenv/config';
+import { Users } from '../api/users/Users_Model';
+import { Expenses } from '../api/expenses/Expenses_Model';
 
 export const AppDataSource = new DataSource({
     type: 'mysql',
@@ -11,7 +13,7 @@ export const AppDataSource = new DataSource({
     database: process.env.DB_DATABASE,
     synchronize: false,
     logging: false,
-    entities: [],
+    entities: [Users, Expenses],
     migrations: [],
     subscribers: [],
 });
