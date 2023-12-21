@@ -34,7 +34,7 @@ export class UsersController {
 
     async getByID(request: Request, response: Response) {
         try {
-            const { id } = request.body;
+            const { id } = request.params;
 
             if (!id) {
                 return response.status(400).send({ message: 'It is necessary to fill in all the data' });
@@ -60,7 +60,7 @@ export class UsersController {
 
     async getByEmail(request: Request, response: Response) {
         try {
-            const { email } = request.body;
+            const { email } = request.params;
 
             if (!email) {
                 return response.status(400).send({ message: 'It is necessary to fill in all the data' });

@@ -38,7 +38,7 @@ export class ExpensesController {
 
     async getByID(request: Request, response: Response) {
         try {
-            const { id } = request.body;
+            const { id } = request.params;
 
             if (!id) {
                 return response.status(400).send({ message: 'It is necessary to fill in all the data' });
