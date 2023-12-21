@@ -1,7 +1,8 @@
 import { Request, Response } from 'express';
 import { ExpensesService } from './Expenses_Service';
-import { parse } from 'date-fns';
+import { addBusinessDays, parse } from 'date-fns';
 import { UsersService } from '../users/Users_Service';
+import { DataSource } from 'typeorm';
 
 const service = new ExpensesService();
 
@@ -23,7 +24,13 @@ export class ExpensesController {
 
             const final__payday = parse(payday, 'dd/MM/yyyy', new Date());
 
-            const result = await service.create({ name: name, description: description, price: price, fkUser: user.id, payday: final__payday });
+            const result = await service.create({
+                name: name,
+                description: description,
+                price: price,
+                fkUser: user.id,
+                payday: final__payday,
+            });
 
             if (result instanceof Error) {
                 return response.status(400).send({ message: result.message });

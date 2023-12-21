@@ -63,6 +63,9 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.red,
+      ),
       body: ListView.builder(
         itemCount: dados.length,
         itemBuilder: (context, index) {

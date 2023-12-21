@@ -18,7 +18,7 @@ class App extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'App para Despesas',
-      home: LoginPage(),
+      home: HomePage(),
       theme: ThemeData(
         fontFamily: 'Poppins',
         brightness: Brightness.dark,
