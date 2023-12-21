@@ -7,7 +7,7 @@ const controller = new ExpensesController();
 expensesRouter.post('/create', controller.create);
 
 expensesRouter.get('/get', controller.getAll);
-expensesRouter.get('/get/id', controller.getByID);
+expensesRouter.get('/get/id/:id', controller.getByID);
 
 expensesRouter.put('/update', controller.update);
 

@@ -6,8 +6,8 @@ const userRouter = Router();
 
 userRouter.post('/create', controller.create);
 
-userRouter.get('/get/email', controller.getByEmail);
-userRouter.get('/get/id', controller.getByID);
+userRouter.get('/get/email/:email', controller.getByEmail);
+userRouter.get('/get/id/:id', controller.getByID);
 
 userRouter.put('/update', controller.update);
 
